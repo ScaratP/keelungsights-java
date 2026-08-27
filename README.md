@@ -4,9 +4,9 @@
 
 ## 📍 繳交網址資訊 (Submission URLs)
 
-*   **GitHub Repo 網址：** ``
-*   **雲端公開網址 (前端頁面)：** `https://keelung-sights-project-production.up.railway.app/`
-*   **API 測試範例網址：** `https://keelung-sights-project-production.up.railway.app/api/sights/qidu`
+*   **GitHub Repo 網址：** `https://github.com/ScaratP/keelungsights-java`
+*   **雲端公開網址 (前端頁面)：** `https://keelungsights-java-production.up.railway.app/`
+*   **API 測試範例網址：** `https://keelungsights-java-production.up.railway.app/api/sights/qidu`
 
 ---
 
@@ -24,15 +24,19 @@
 
 1.  **環境變數設定：**
     請在系統環境變數中，或在 IDE (如 IntelliJ) 的執行設定中，加入 `MONGODB_URI` 變數並填入 MongoDB Atlas 真實連線字串。
-    *(請確保專案目錄下不要有包含真實密碼的 `.env` 檔案以免誤傳)*
 
 2.  **啟動 Spring Boot 伺服器與初始化資料：**
     專案內建 `DataInitRunner`，啟動伺服器時會自動檢查資料庫，若為空則自動呼叫爬蟲進行資料播種。
     請在終端機執行以下指令啟動：
-    ```bash
-    ./mvnw spring-boot:run
-    ```
-    *(Windows 環境請使用 `mvnw spring-boot:run`)*
+
+    *   **Mac / Linux 環境**：
+        ```bash
+        ./mvnw spring-boot:run
+        ```
+    *   **Windows 環境 (PowerShell / VS Code 終端機)**：
+        ```bash
+        .\mvnw.cmd spring-boot:run
+        ```
 
 3.  **瀏覽應用程式：**
     *   **前端網頁：** 開啟瀏覽器前往 `http://localhost:8080`
@@ -44,13 +48,13 @@
 
 1.  **建立 Docker Image：**
     ```bash
-    docker build -t keelung-sights .
+    docker build -t keelung-sights-java .
     ```
 
 2.  **運行 Docker Container：**
     容器啟動時已設定綁定連接埠。透過 `-e` 傳入 MongoDB 連線字串：
     ```bash
-    docker run -p 8080:8080 -e MONGODB_URI="真實連線字串" keelung-sights
+    docker run -p 8080:8080 -e MONGODB_URI="真實連線字串" keelung-sights-java
     ```
     執行後即可透過 `http://localhost:8080` 查看網頁。
 
